@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.peach.dao.test.TestDao">
+
+    <sql id="allUserInformation">ID User_ID, Number, Name User_Name, Gender, Birthday, Contact, Office, Password, Activate</sql>
+
+    <resultMap id="UserMap" type="com.peach.domain.entity.User">
+        <id column="User_ID" jdbcType="INTEGER" property="id" />
+        <result column="Number" jdbcType="VARCHAR" property="number" />
+        <result column="User_Name" jdbcType="VARCHAR" property="name" />
+        <result column="Gender" jdbcType="CHAR" property="gender" />
+        <result column="Birthday" jdbcType="DATE" property="birthday" />
+        <result column="Contact" jdbcType="VARCHAR" property="contact" />
+        <result column="Office" jdbcType="VARCHAR" property="office" />
+        <result column="Password" jdbcType="VARCHAR" property="password" />
+        <result column="Activate" jdbcType="BIT" property="activate" />
+    </resultMap>
+
+    <!-- 根据账号获取唯一用户 -->
+    <select id="getUserByNumber" resultMap="UserMap">
+        SELECT
+        <include refid="allUserInformation" />
+        FROM user
+        WHERE Number=#{number}
+    </select>
+
+    <!-- 根据条件获取所有复合条件的用户 -->
+    <select id="getAllUser" resultMap="UserMap">
+        SELECT
+        <include refid="allUserInformation" />
+        FROM user
+        <if test="condition != null">
+            <trim prefix="WHERE" prefixOverrides="AND | OR">
+                <if test="number != null">
+                    Number=#{number}
+                </if>
+                <if test="name != null">
+                    AND User_Name=#{name}
+                </if>
+                <if test="gender != null">
+                    AND Gender=#{gender}
+                </if>
+                <if test="birthday != null">
+                    AND Birthday=#{birthday}
+                </if>
+                <if test="contact != null">
+                    AND Contact=#{contact}
+                </if>
+                <if test="office != null">
+                    AND Office=#{office}
+                </if>
+                <if test="activate != null">
+                    AND Activate=#{activate}
+                </if>
+            </trim>
+        </if>
+    </select>
+
+</mapper>
