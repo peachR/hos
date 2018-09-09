@@ -1,4 +1,7 @@
-package enumeration;
+package com.peach.domain.enumeration;
 
-public class BaseEnum {
+public interface BaseEnum {
+    int getCode();
+
+    String getMsg();
 }

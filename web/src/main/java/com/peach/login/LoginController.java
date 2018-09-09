@@ -1,7 +1,7 @@
 package com.peach.login;
 
 import com.peach.domain.entity.User;
-import response.Result;
+import com.peach.domain.response.Result;
 
 
 public interface LoginController {
