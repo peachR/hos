@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="redisConn" class="com.peach.dao.redis.config.RedisConn">
+    <bean id="redisConn" class="com.peach.dao.config.redis.RedisConn">
         <property name="host" value="${spring.redis.host}"/>
         <property name="database" value="${spring.redis.database}"/>
         <property name="expireTime" value="${spring.redis.expireTime}" />

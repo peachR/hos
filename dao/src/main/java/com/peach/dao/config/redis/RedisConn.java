@@ -1,4 +1,4 @@
-package com.peach.dao.redis.config;
+package com.peach.dao.config.redis;
 
 public class RedisConn {
     private String host;

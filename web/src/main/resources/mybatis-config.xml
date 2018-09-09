@@ -11,11 +11,21 @@
         <property name="password" value="${jdbc.password}" />
     </bean>
 
+    <!-- typeHandler bean -->
+    <bean id="enumTypeHandler" class="com.peach.dao.config.mybatis.typehandler.EnumTypeHandler" >
+        <constructor-arg type="java.lang.Class" value="com.peach.domain.enumeration.response.ExampleEnum" />
+    </bean>
+
     <!-- spring和MyBatis整合，不需加Mybaits配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:mybatis/*.xml" />
+        <property name="typeHandlers">
+            <array>
+                <ref bean="enumTypeHandler" />
+            </array>
+        </property>
     </bean>
 
     <!-- 搜索DAO接口所在包，Spring自动查找其下的类 -->
