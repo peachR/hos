@@ -1,4 +1,4 @@
-package response;
+package com.peach.domain.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import enumeration.response.ResponseEnum;
@@ -16,7 +16,7 @@ public class Result<T> {
     }
 
     public static <T> Result<T> newFailResult(){
-        Result<T> result = new Result<>();
+        Result<T> result = new Result<T>();
         result.setSubcode("-1");
         result.setSuccess(false);
         result.setResponseCode(ResponseEnum.UNKNOW_ERROR);
@@ -24,7 +24,7 @@ public class Result<T> {
     }
 
     public static <T> Result<T> newSuccessResult(T data){
-        Result<T> result = new Result<>();
+        Result<T> result = new Result<T>();
         result.setData(data);
         result.setResponseCode(ResponseEnum.SUCCESS);
         result.setSuccess(true);
