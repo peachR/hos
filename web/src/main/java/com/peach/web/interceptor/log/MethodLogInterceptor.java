@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 @Aspect
-@Component
 public class MethodLogInterceptor {
     private static final Logger logger = LogManager.getLogger(MethodLogInterceptor.class);
 
