@@ -30,7 +30,9 @@ public class LoginControllerImpl implements LoginController {
     @Override
     @GetMapping("/test")
     public Result getUserInformation() {
-        log.error("test log success");
+        log.error("test error log success");
+        log.warn("test warn log success");
+        log.info("test info log success");
         redisService.set("test", "application set");
         return Result.newSuccessResult(testService.getUserByNumber("123"));
     }
