@@ -22,4 +22,5 @@
 
     <import resource="mybatis-config.xml" />
     <import resource="redis-config.xml" />
+    <import resource="interceptor-config.xml" />
 </beans>
