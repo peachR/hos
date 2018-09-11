@@ -22,9 +22,9 @@ public class MethodLogInterceptor {
         try{
             long begTime = System.currentTimeMillis();
             Object result = pjp.proceed();
-            long during = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - begTime);
+            long during = System.currentTimeMillis() - begTime;
             String description = AnnotationUtil.getAnnotationFromMethod(AopUtil.getTargetMethod(pjp), RuntimeLog.class).description();
-            logger.warn(getMethodName(pjp) + ": " + during + "s; " + description);
+            logger.warn(getMethodName(pjp) + ": " + during + "ms; " + description);
             return result;
         }catch (Throwable ex){
             logger.error("MethodLogInterceptor exception:", ex);
