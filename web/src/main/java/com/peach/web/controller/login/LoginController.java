@@ -1,4 +1,4 @@
-package com.peach.login;
+package com.peach.web.controller.login;
 
 import com.peach.domain.entity.User;
 import com.peach.domain.response.Result;
