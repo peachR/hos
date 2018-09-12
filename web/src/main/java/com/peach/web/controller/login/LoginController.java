@@ -8,4 +8,6 @@ public interface LoginController {
     Result login(User user);
 
     Result getUserInformation();
+
+    Result exceptionTest();
 }

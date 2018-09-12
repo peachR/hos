@@ -36,4 +36,9 @@ public class LoginControllerImpl implements LoginController {
         redisService.set("test", "application set");
         return Result.newSuccessResult(testService.getUserByNumber("123"));
     }
+
+    @GetMapping("exception")
+    public Result exceptionTest(){
+        throw new RuntimeException("test exception");
+    }
 }
